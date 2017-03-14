@@ -8,7 +8,7 @@ RUN sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
 RUN setcap 'cap_net_bind_service=+ep' /usr/sbin/apache2
 RUN /etc/init.d/apache2 stop
 RUN echo "<? phpinfo()" > /var/www/html/info.php
-RUN chorm -R /var/www/html
+RUN chown -R www-data: /var/www/html
 RUN chown -R www-data: /var/log/apache2/
 RUN chown -R www-data: /var/run/apache2/
 RUN mkdir /home/www-data
